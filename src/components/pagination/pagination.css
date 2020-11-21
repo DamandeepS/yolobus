@@ -1,0 +1,20 @@
+.pagination {
+    text-align: center;
+}
+
+.pagination__item {
+    display: inline-block;
+    margin: 4px;
+}
+
+.pagination__button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.pagination__button--active {
+    background-color: #ccc;
+    cursor: default;
+}

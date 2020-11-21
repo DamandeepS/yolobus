@@ -1,0 +1,65 @@
+.bus-schedule {
+    overflow-x: scroll;
+}
+
+.bus-schedule__table {
+    background: #fff;
+    margin: 20px auto;
+}
+
+.bus-schedule__header-item {
+    font-weight: 500;
+    padding: 10px 5px;
+}
+
+.bus-schedule__header-item--sortable {
+    padding-right: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.bus-schedule__header-item--sortable:after {
+    content: '';
+    height: 100%;
+    width: 10px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./sort-up-down.svg');
+}
+
+.bus-schedule__header-item--sortable:hover {
+    border-radius: 4px;
+    background: #fff6f6;
+}
+
+.bus-schedule__header-item--sort-down,
+.bus-schedule__header-item--sort-up {
+    border-radius: 4px;
+    background: #fff6f6;
+}
+
+.bus-schedule__header-item--sort-down:after {
+    background-image: url('./sort-down.svg');
+}
+
+.bus-schedule__header-item--sort-up:after {
+    background-image: url('./sort-down.svg');
+    transform: rotate(180deg);
+}
+
+.bus-schedule__item {
+    padding: 10px 3px 10px 6px;
+    border-bottom: 1px inset #f5ebeb;
+}
+
+.bus-schedule__item:last-child {
+    text-align: right;
+}
+.bus-schedule__row:last-child .bus-schedule__item {
+    border-bottom: none;
+}
