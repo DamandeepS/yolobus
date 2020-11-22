@@ -46,11 +46,11 @@ const Filter = ({setFilteredContent, content, pnrID, nameID, contactID}) => {
     return (
         <div className='filters'>
             <div className="filter__min-date">
-                <label className="filters__label" htmlFor="min-date" >Search Name</label>
+                <label className="filters__label" htmlFor="min-date" >From Date</label>
                 <input className="filters__input" id="min-date" type="date" onChange={e => handleDateChange(e, 'min')} ref={minDateRef}></input>
             </div>
             <div className="filter__max-date">
-                <label className="filters__label" htmlFor="max-date" >Search Name</label>
+                <label className="filters__label" htmlFor="max-date" >Till Date</label>
                 <input className="filters__input" id="max-date" type="date" onChange={e => handleDateChange(e, 'max')} ref={maxDateRef}></input>
             </div>
             

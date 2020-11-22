@@ -35,6 +35,7 @@
     animation-timing-function:  ease-in-out;
     animation-duration: 0.4s;
     animation-fill-mode: both;
+    box-shadow: 0 0 13px -16px #000, 0 0 20px -18px #000, 0 0 25px -18px #000
 }
 
 .form-popup__close {

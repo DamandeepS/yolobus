@@ -69,7 +69,7 @@ const YoloBus = () => {
         <Fragment>
             {loading ? <div className='loading'>Loading...</div> : <Fragment>
                 <Filter {...{content, filteredContent, setFilteredContent}} pnrID={`pnr`} nameID={`passangerDetails.name`}/>
-                <BusSchedule  data={paginatedData} {...{selectItem, tableHeaders}}/>
+                <BusSchedule  data={paginatedData} {...{selectItem, tableHeaders}} pnrID={`pnr`} dateID="date" contactID='passangerDetails.number' amountID="amount"/>
                 <Pagination {...{filteredContent, itemsPerPage, setPaginatedData}}></Pagination>
                 <FormPopup ref={formPopupRef} pnrID={`pnr`} fromLocationID="locationStart" toLocationID='locationEnd' dateID="date" contactID='passangerDetails.number' amountID="amount" nameID={`passangerDetails.name`}></FormPopup>
             </Fragment>}

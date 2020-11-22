@@ -7,6 +7,13 @@ const valueReducer = (id, content) => id?.split('.').reduce((result, id) => resu
 
 const getDateFromTimeStamp = timestamp => {
     const date = new Date(timestamp);
-    return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
+    const formatter = new Intl.DateTimeFormat(['en-US', 'en-GB']);
+    return formatter.format(date);
 }
-export { valueReducer, getDateFromTimeStamp };
+
+const amountFormatter = input => {
+    const amount = parseFloat(input).toFixed(2);
+    const formatter = new Intl.NumberFormat({style:'currency'});
+    return formatter.format(amount);
+}
+export { valueReducer, getDateFromTimeStamp, amountFormatter };

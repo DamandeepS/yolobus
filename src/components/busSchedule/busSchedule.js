@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from 'react';
-import { valueReducer, getDateFromTimeStamp } from '../utils';
+import { valueReducer, getDateFromTimeStamp, amountFormatter } from '../utils';
 import './busSchedule.css';
 
-const BusSchedule = ({data, tableHeaders, selectItem}) => {
+const BusSchedule = ({data, tableHeaders, selectItem, pnrID, amountID, contactID, dateID}) => {
 
     const [content, setContent] = useState(data);
     const [sortedId, setSortedId] = useState(tableHeaders?.reduce((acc, header) => acc!=null && header.sortable ? header.id : acc, null));
@@ -67,17 +67,17 @@ const BusSchedule = ({data, tableHeaders, selectItem}) => {
                                 {
                                     element && header?.id?.split('.').reduce((result, id) => {
                                         switch (id) {
-                                            case 'pnr': 
+                                            case pnrID: 
                                                 return <a href={`/pnr/${result[id]}`} onClick={e => {
                                                     e.preventDefault();
                                                     selectItem(element);
                                                 }}>{result[id]}</a>
-                                            case 'date': 
+                                            case dateID: 
                                                 return getDateFromTimeStamp(result[id]);
-                                            case 'number': 
+                                            case contactID: 
                                                 return <a href={`tel://${result[id]}`}>{result[id]}</a>;
-                                            case 'total': 
-                                                return parseFloat(result[id]).toFixed(2);
+                                            case amountID: 
+                                                return amountFormatter(result[id])
                                             default:
                                                 return result[id];
                                         }
@@ -90,7 +90,7 @@ const BusSchedule = ({data, tableHeaders, selectItem}) => {
                         </tr>);
                     }) : 
                     <Fragment><tr>
-                        <td style={{textAlign: "center", paddingTop: "30px", fontSize: '3em', fontWeight: '200'}} colSpan={7}>(╯°□°)╯︵ ┻━┻</td>
+                        <td style={{textAlign: "center", paddingTop: "30px", fontSize: '3em', fontWeight: '200'}} colSpan={7}>(┛ಠ_ಠ)┛彡┻━┻</td>
                         </tr>
                         <tr>
                         <td style={{textAlign: "center", paddingBottom: "30px", fontSize: '1.75em', fontWeight: '200'}} colSpan={7}>Not found</td>
@@ -99,8 +99,6 @@ const BusSchedule = ({data, tableHeaders, selectItem}) => {
                 }
             </tbody>
         </table>
-
-        { sortedId}
         </div>
     );
 };

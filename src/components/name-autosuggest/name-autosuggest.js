@@ -10,7 +10,7 @@ let NameAutocomplete = ({content, nameID, setFilteredContent, resetAllFilters}, 
             ...new Set(content?.filter(item => {
                 return filteredText?.trim() === '' || valueReducer(nameID, item)?.toLowerCase().includes(filteredText?.toLowerCase().trim());
             }).map(item => valueReducer(nameID, item)))
-        ]);
+        ].slice(0, 5));
     }, [filteredText, content, nameID]);
 
     const handleSuggestionClick = e => {
@@ -39,7 +39,7 @@ let NameAutocomplete = ({content, nameID, setFilteredContent, resetAllFilters}, 
 
     return (
         <div className="search">
-                <label className="filters__label" htmlFor="name-search" >Search Name</label>
+                <label className="filters__label" htmlFor="name-search" >Name Search</label>
                 <input id="name-search" className="search__input filters__input" type="search" onChange={e => updateInput(e.target.value, true)} placeholder={`Start typing to search`} value={filteredText} />
 
             {
